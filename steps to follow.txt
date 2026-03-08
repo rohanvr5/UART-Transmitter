@@ -1,0 +1,68 @@
+1. Plug in your Basys 3 board
+
+Connect your Basys 3 board to your PC via the micro-USB cable.
+
+Wait a moment for the drivers to load.
+
+Go to Device Manager → Ports (COM & LPT) and check which COM port was assigned (e.g., COM4 or COM3).
+
+🗂 2. Launch Tera Term properly
+
+Open Tera Term from the Start menu.
+
+You’ll get a pop-up titled “Tera Term: New Connection”.
+
+Select Serial and choose your COM port (e.g., COM4).
+
+Click OK.
+
+If this prompt doesn’t appear:
+Go to File → New Connection → Select Serial → Choose the correct COM port → Click OK.
+
+⚙️ 3. Set the correct Serial Settings
+
+To configure the UART settings:
+
+Go to Setup → Serial port...
+
+Set:
+
+Baud rate: 9600 (or the value your UART module uses)
+
+Data: 8 bit
+
+Parity: none
+
+Stop: 1 bit
+
+Flow control: none
+
+Click OK
+
+🎯 4. Optional: Save Your Settings
+
+To make Tera Term remember your settings every time:
+
+After connecting, go to Setup → Save Setup...
+
+Save it as teraterm.ini (this overwrites the default config).
+
+Next time Tera Term opens, it will use your saved settings and connect to the last-used COM port.
+
+💡 5. Test the UART Output
+
+Set your switches to a value (like sw[7:0] = 8’b01000001 for ASCII 'A')
+
+Press btn1 (transmit button)
+
+Tera Term should display: A
+
+🧪 If Nothing Shows Up:
+
+Confirm bitstream is correctly programmed to FPGA.
+
+Recheck the baud rate and COM port.
+
+Check if your UART module’s Tx line is connected to the correct FPGA pin (A18 for TxD on Basys 3).
+
+Check if btn0 is used for reset and if it's being held low unintentionally.
